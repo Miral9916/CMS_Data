@@ -80,36 +80,32 @@ st.metric("Number of Unique Patients",f"{len(df['DESYNPUF_ID'].unique())}")
 
 ## Individual Graphs
 col1, col2, col3 = st.columns(3)
-
 with col1:
     
     fig = px.histogram(df,
                    x='AGE_INTERVAL',
                    text_auto=True,
                    width=300,
-                   title = " Age-wise Distribution",
+                   title = " Age Base Analysis",
                    height=400
                    
 
                    )
-    fig.update(layout=dict(title=dict(x=0.1)))
-    fig.update_traces(textposition='inside', textinfo='percent')
     st.plotly_chart(fig)
-
- with col2:
+with col2:
      
-    value=df.groupby('RACE')['RACE'].count()
-    name=df.groupby('RACE')['RACE'].count().index
-    fig1 = px.pie(df, values = df.groupby('RACE')["RACE"].count(),names=name,title = "Race-wise Distribution", width=400,height = 400)
-    fig1.update(layout=dict(title=dict(x=0.1)))
-    fig1.update_traces(textposition='inside', textinfo='percent')
-    st.plotly_chart(fig1)
+     value=df.groupby('RACE')['RACE'].count()
+     name=df.groupby('RACE')['RACE'].count().index
+     fig1 = px.pie(df, values = df.groupby('RACE')["RACE"].count(),names=name,title = "Race Base Analysis", width=400,height = 400)
+     fig1.update(layout=dict(title=dict(x=0.1)))
+     fig1.update_traces(textposition='inside', textinfo='percent')
+     st.plotly_chart(fig1)
 
 with col3:
     
     value=df.groupby('GENDER')['GENDER'].count()
     name=df.groupby('GENDER')['GENDER'].count().index
-    chart1 = px.pie(df, values = value,names=name,title = "Gender-wise Distribution",width=400, height = 400)
+    chart1 = px.pie(df, values = value,names=name,title = "Gender Base Analysis",width=400, height = 400)
     chart1.update(layout=dict(title=dict(x=0.1)))
     st.plotly_chart(chart1)
 
