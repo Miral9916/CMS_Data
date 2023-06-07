@@ -28,26 +28,17 @@ with st.sidebar:
 
     options3=st.multiselect('Select Race', options=['All'] + list(beneficiary['RACE'].unique().tolist()),default=a)
 
-    options4=st.multiselect('Select State', options=['All'] + list(beneficiary['STATE'].unique().tolist()),default=a)
-
 
     if 'All' in options1:
              filtered_df = beneficiary
     else:
          filtered_df = beneficiary[beneficiary['AGE_INTERVAL'].isin(options1)]
-
-         
-    if 'All' not in options2:
-            filtered_df = filtered_df[filtered_df['GENDER'].isin(options2)]
            
-
     if 'All' not in options3:
             filtered_df = filtered_df[filtered_df['RACE'].isin(options3)]
-            
-
-    if 'All' not in options4:
-            filtered_df = filtered_df[filtered_df['STATE'].isin(options4)]
-
+    
+    if 'All' not in options2:
+           filtered_df = filtered_df[filtered_df['GENDER'].isin(options2)]
 
 
 df = filtered_df.drop_duplicates(subset=["DESYNPUF_ID"], keep='first')
