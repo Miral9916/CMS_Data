@@ -9,10 +9,9 @@ import plotly.graph_objects as go
 ## Improting CSV File
 beneficiary = pd.read_csv("benificiary_d.csv")
 
-
-
+## Setting Up Title of Dashboad
 st.set_page_config(page_title="Demographic Distribution of CMS Beneficiary Data", layout="wide")
-st.markdown(f"<h1 style='text-align: left; color: #FF0000 ;> Demographic Distribution of CMS Beneficiary Data</h1>",unsafe_allow_html=True)
+st.markdown(f"<h1 style='text-align: left; color: #35BAE2 ;> Demographic Distribution of CMS Beneficiary Data</h1>",unsafe_allow_html=True)
 
 
 
