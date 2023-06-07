@@ -16,8 +16,8 @@ st.markdown(f"<h1 style='text-align: left; color: #00008B; width:1360px; height 
 ## Filtering Options
 with st.sidebar:
     st.markdown(
-        '<div style="background-color: #00008B; color:black;height: 50px; width: 298px; border-radius: 5px">'
-        '<h2 style="text-align: center;color: white">Demographic</h2>'
+        '<div style="background-color: #00008B; color:white;height: 50px; width: 298px; border-radius: 5px">'
+        '<h2 style="text-align: center;color: white">Filter</h2>'
         '</div>', unsafe_allow_html=True
     )
 
