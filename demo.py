@@ -84,8 +84,8 @@ with col1:
     fig = px.histogram(df,
                    x= 'AGE_INTERVAL',
                    text_auto=True,
-                   width=300,
-                   title = " Age Base Analysis",
+                   width=400,
+                   title = "Age Base Analysis",
                    height=400
                    
 
