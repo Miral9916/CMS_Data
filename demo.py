@@ -85,7 +85,7 @@ with col1:
 
     value=df.groupby('GENDER')['GENDER'].count()
     name=df.groupby('GENDER')['GENDER'].count().index
-    chart1 = px.pie(df, labels='GENDER', values = value,names=name,title = "Gender-wise Distribution",width=400, height = 400)
+    chart1 = px.pie(df, values = value,names=name,title = "Gender-wise Distribution",width=400, height = 400)
     chart1.update(layout=dict(title=dict(x=0.1)))
     st.plotly_chart(chart1)    
     
