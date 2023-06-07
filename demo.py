@@ -84,9 +84,9 @@ with col1:
     fig = px.histogram(df,
                    x= 'AGE_INTERVAL',
                    text_auto=True,
-                   width=600,
+                   width=500,
                    title = "Age Base Analysis",
-                   height=600
+                   height=500
                    
 
                    )
@@ -95,7 +95,7 @@ with col2:
      
      value=df.groupby('RACE')['RACE'].count()
      name=df.groupby('RACE')['RACE'].count().index
-     fig1 = px.pie(df, values = value,names=name,title = "Race Base Analysis", width=400,height = 400)
+     fig1 = px.pie(df, values = value,names=name,title = "Race Base Analysis", width=500,height = 500)
      fig1.update(layout=dict(title=dict(x=0.1)))
      fig1.update_traces(textposition='inside', textinfo='percent')
      st.plotly_chart(fig1)
