@@ -66,9 +66,9 @@ div[data-testid="metric-delta-container"] {
 }
 
 div[data-testid="metric-container"] {
-    background-color: #B0C4DE;
+    background-color: #B0C4DE; ## color of no. of unqiue patient
     border-radius: 10px;
-    padding: 1rem;
+    padding: 2em;
 }
 """
 st.write('<style>{}</style>'.format(style), unsafe_allow_html=True)
