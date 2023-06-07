@@ -12,7 +12,7 @@ beneficiary = pd.read_csv("benificiary_d.csv")
 
 
 st.set_page_config(page_title="Demographic Distribution of CMS Beneficiary Data", layout="wide")
-st.markdown(f"<h1 style='text-align: center; color: #35BAE2 ; width:1360px;height : 100px '>Demographic Distribution of CMS Beneficiary Data</h1>",unsafe_allow_html=True)
+st.markdown(f"<h1 style='text-align: left; color: #35BAE2 ; width:1360px;height : 100px '>Demographic Distribution of CMS Beneficiary Data</h1>",unsafe_allow_html=True)
 
 
 
