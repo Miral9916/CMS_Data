@@ -113,7 +113,7 @@ with col4:
     value = (df['AGE_INTERVAL'].value_counts(normalize=True) * 100).reset_index()
     fig = px.bar(df,
              x='AGE_INTERVAL',
-             y=value,
+             y='value',
              text='AGE_INTERVAL_PERCENTAGE',
              width=600,
              title="Age Base Analysis",
