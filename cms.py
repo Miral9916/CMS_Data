@@ -6,6 +6,9 @@ import plotly.figure_factory as ff
 import plotly.graph_objects as go
 import base64
 
+x=[116352]
+y=['Total Patients']
+
 beneficiary = pd.read_csv("benificiary_d.csv")
 
 st.set_page_config(page_title=" CMS Dashboard", page_icon=":bar_chart:", layout="wide", initial_sidebar_state="expanded")
