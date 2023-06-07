@@ -13,18 +13,14 @@ beneficiary = pd.read_csv("benificiary_d.csv")
 st.set_page_config(page_title="Demographic Distribution of CMS Beneficiary Data", layout="wide")
 st.markdown(f"<h1 style='text-align: left; color: #00008B; width:1360px; height : 100px '>Demographic Distribution of CMS Beneficiary Data</h1>",unsafe_allow_html=True)
 
-
-
-
+## Filtering Options
 with st.sidebar:
     st.markdown(
-        '<div style="background-color: #060505; color:black;height: 50px; width: 298px; border-radius: 5px">'
+        '<div style="background-color: #00008B; color:black;height: 50px; width: 298px; border-radius: 5px">'
         '<h2 style="text-align: center;color: white">Demographic</h2>'
         '</div>', unsafe_allow_html=True
     )
 
-
-   
     a=['All']          
     options1=st.multiselect('Select age', options=['All'] + list(beneficiary['AGE_INTERVAL'].unique().tolist()),default=a)
 
