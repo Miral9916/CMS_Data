@@ -81,9 +81,10 @@ st.metric("Number of Unique Patients",f"{len(df['DESYNPUF_ID'].unique())}")
 ## Individual Graphs
 col1, col2, col3 = st.columns(3)
 with col1:
-    
+    value=df.groupby('AGE_INTERVAL')['AGE_INTERVAL'].count()
+    name=df.groupby('AGE_INTERVAL')['AGE_INTERVAL'].count().index
     fig = px.histogram(df,
-                   x='AGE_INTERVAL',
+                   x=value,
                    text_auto=True,
                    width=300,
                    title = " Age Base Analysis",
