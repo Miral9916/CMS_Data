@@ -111,7 +111,7 @@ with col3:
 with col4:
     
     df['value'] = df['AGE_INTERVAL'].value_counts(normalize=True) * 100
-    fig = px.bar(df,
+    fig2 = px.bar(df,
              x='AGE_INTERVAL',
              y='value',
              text='value',
@@ -119,9 +119,9 @@ with col4:
              title="Age Base Analysis",
              height=400)
 
-    fig.update_traces(texttemplate='%{text:.2f}%', textposition='outside')
+    fig2.update_traces(texttemplate='%{text:.2f}%', textposition='outside')
 
-    fig.update_layout(xaxis_title='Age Interval', yaxis_title='Percentage'
+    fig2.update_layout(xaxis_title='Age Interval', yaxis_title='Percentage'
 )
 
 
