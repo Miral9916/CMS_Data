@@ -100,8 +100,8 @@ with col2:
      fig1.update_traces(textposition='inside', textinfo='percent')
      st.plotly_chart(fig1)
 
-col3 = st.columns(1)
-with col3:
+col1 = st.columns(1)
+with col1:
     
     value=df.groupby('GENDER')['GENDER'].count()
     name=df.groupby('GENDER')['GENDER'].count().index
