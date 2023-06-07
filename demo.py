@@ -33,13 +33,12 @@ with st.sidebar:
              filtered_df = beneficiary
     else:
          filtered_df = beneficiary[beneficiary['AGE_INTERVAL'].isin(options1)]
+    
+    if 'All' not in options2:
+         filtered_df = filtered_df[filtered_df['GENDER'].isin(options2)]
            
     if 'All' not in options3:
             filtered_df = filtered_df[filtered_df['RACE'].isin(options3)]
-    
-    if 'All' not in options2:
-           filtered_df = filtered_df[filtered_df['GENDER'].isin(options2)]
-
 
 df = filtered_df.drop_duplicates(subset=["DESYNPUF_ID"], keep='first')
 
@@ -82,21 +81,21 @@ with col1:
 
                    )
     st.plotly_chart(fig)
-
+    
+    value=df.groupby('RACE')['RACE'].count()
+    name=df.groupby('RACE')['RACE'].count().index
+    fig1 = px.pie(df, values = value,names=name,title = "Race-wise Distribution", width=400,height = 400)
+    fig1.update(layout=dict(title=dict(x=0.1)))
+    fig1.update_traces(textposition='inside', textinfo='percent')
+    st.plotly_chart(fig1)    
+    
+with col2:
+     
     value=df.groupby('GENDER')['GENDER'].count()
     name=df.groupby('GENDER')['GENDER'].count().index
     chart1 = px.pie(df, values = value,names=name,title = "Gender-wise Distribution",width=400, height = 400)
     chart1.update(layout=dict(title=dict(x=0.1)))
-    st.plotly_chart(chart1)    
-    
-with col2:
-     
-     value=df.groupby('RACE')['RACE'].count()
-     name=df.groupby('RACE')['RACE'].count().index
-     fig1 = px.pie(df, values = value,names=name,title = "Race-wise Distribution", width=400,height = 400)
-     fig1.update(layout=dict(title=dict(x=0.1)))
-     fig1.update_traces(textposition='inside', textinfo='percent')
-     st.plotly_chart(fig1)
+    st.plotly_chart(chart1)
    
 # with col4:
     
