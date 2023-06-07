@@ -17,7 +17,7 @@ st.markdown(f"<h1 style='text-align: left; color: #00008B; width:1360px; height 
 with st.sidebar:
     st.markdown(
         '<div style="background-color: #00008B; height: 50px; width: 298px; border-radius: 5px">'
-        '<h2 style = "text-align: center; color: white">Filter</h2>'
+        '<h2 style = "text-align: center; color: white"> Filter </h2>'
         '</div>', unsafe_allow_html=True
     )
 
@@ -85,7 +85,7 @@ with col1:
 
     value=df.groupby('GENDER')['GENDER'].count()
     name=df.groupby('GENDER')['GENDER'].count().index
-    chart1 = px.pie(df, values = value,names=name,title = "Gender-wise Distribution",width=400, height = 400)
+    chart1 = px.pie(df, x='GENDER', values = value,names=name,title = "Gender-wise Distribution",width=400, height = 400)
     chart1.update(layout=dict(title=dict(x=0.1)))
     st.plotly_chart(chart1)    
     
