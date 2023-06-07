@@ -92,7 +92,6 @@ with col1:
 
                    )
     fig.update(layout=dict(title=dict(x=0.1)))
-    fig.update_traces(textposition='inside', textinfo='percent')
     st.plotly_chart(fig)
 with col2:
      
