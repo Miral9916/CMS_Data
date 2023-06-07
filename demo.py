@@ -66,7 +66,7 @@ div[data-testid="metric-delta-container"] {
 }
 
 div[data-testid="metric-container"] {
-    background-color: #000080;
+    background-color: #B0C4DE;
     border-radius: 10px;
     padding: 1rem;
 }
