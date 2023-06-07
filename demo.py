@@ -53,6 +53,8 @@ with st.sidebar:
 df = filtered_df.drop_duplicates(subset=["DESYNPUF_ID"], keep='first')
 
 
+## Statistics
+    
 style = """
 div[data-testid="metric-value-container"] {
     font-size: 2em;
@@ -61,7 +63,7 @@ div[data-testid="metric-value-container"] {
 }
 
 div[data-testid="metric-delta-container"] {
-    font-size: 1.30rem;
+    font-size: 2rem;
     font-weight: bold;
 }
 
