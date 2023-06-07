@@ -98,12 +98,12 @@ with col1:
 
  with col2:
      
-     value=df.groupby('RACE')['RACE'].count()
-     name=df.groupby('RACE')['RACE'].count().index
-     fig1 = px.pie(df, values = df.groupby('RACE')["RACE"].count(),names=name,title = "Race-wise Distribution", width=400,height = 400)
-     fig1.update(layout=dict(title=dict(x=0.1)))
-     fig1.update_traces(textposition='inside', textinfo='percent')
-     st.plotly_chart(fig1)
+    value=df.groupby('RACE')['RACE'].count()
+    name=df.groupby('RACE')['RACE'].count().index
+    fig1 = px.pie(df, values = df.groupby('RACE')["RACE"].count(),names=name,title = "Race-wise Distribution", width=400,height = 400)
+    fig1.update(layout=dict(title=dict(x=0.1)))
+    fig1.update_traces(textposition='inside', textinfo='percent')
+    st.plotly_chart(fig1)
 
 with col3:
     
