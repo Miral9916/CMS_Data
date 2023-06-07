@@ -114,7 +114,7 @@ with col4:
     fig = px.bar(df,
              x='AGE_INTERVAL',
              y='value',
-             text='AGE_INTERVAL_PERCENTAGE',
+             text='value',
              width=600,
              title="Age Base Analysis",
              height=400)
