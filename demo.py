@@ -84,9 +84,9 @@ with col1:
     fig = px.histogram(df,
                    x= 'AGE_INTERVAL',
                    text_auto=True,
-                   width=500,
-                   title = "Age Base Analysis",
-                   height=500
+                   width=400,
+                   title = "Age-wise Distribution",
+                   height=400
                    
 
                    )
@@ -94,7 +94,7 @@ with col1:
 
     value=df.groupby('GENDER')['GENDER'].count()
     name=df.groupby('GENDER')['GENDER'].count().index
-    chart1 = px.pie(df, values = value,names=name,title = "Gender Base Analysis",width=400, height = 400)
+    chart1 = px.pie(df, values = value,names=name,title = "Gender-wise Distribution",width=400, height = 400)
     chart1.update(layout=dict(title=dict(x=0.1)))
     st.plotly_chart(chart1)    
     
@@ -102,19 +102,10 @@ with col2:
      
      value=df.groupby('RACE')['RACE'].count()
      name=df.groupby('RACE')['RACE'].count().index
-     fig1 = px.pie(df, values = value,names=name,title = "Race Base Analysis", width=500,height = 500)
+     fig1 = px.pie(df, values = value,names=name,title = "Race-wise Distribution", width=400,height = 400)
      fig1.update(layout=dict(title=dict(x=0.1)))
      fig1.update_traces(textposition='inside', textinfo='percent')
      st.plotly_chart(fig1)
-
-col01 = st.column(1)
-with col01:
-    
-    value=df.groupby('GENDER')['GENDER'].count()
-    name=df.groupby('GENDER')['GENDER'].count().index
-    chart1 = px.pie(df, values = value,names=name,title = "Gender Base Analysis",width=400, height = 400)
-    chart1.update(layout=dict(title=dict(x=0.1)))
-    st.plotly_chart(chart1)
    
 # with col4:
     
