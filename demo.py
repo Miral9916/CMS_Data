@@ -1,3 +1,4 @@
+## Importing Required Libraries
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -5,11 +6,12 @@ import plotly.express as px
 import plotly.figure_factory as ff
 import plotly.graph_objects as go
 
+## Improting CSV File
 beneficiary = pd.read_csv("benificiary_d.csv")
 
 
 
-st.set_page_config(page_title=" CMS Dashboard", page_icon=":bar_chart:", layout="wide", initial_sidebar_state="expanded")
+st.set_page_config(page_title="Demographic Distribution of CMS Beneficiary Data", page_icon=":line_chart:", layout="centered", initial_sidebar_state="expanded")
 st.markdown(f"<h1 style='text-align: center; color: #35BAE2 ; width:1360px;height : 100px '>CMS Dashboard</h1>",unsafe_allow_html=True)
 
 
