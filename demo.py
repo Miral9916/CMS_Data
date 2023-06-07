@@ -101,7 +101,7 @@ with col2:
      st.plotly_chart(fig1)
 
 # col01 = st.columns(1)
-# with col01:
+with col01:
     
     value=df.groupby('GENDER')['GENDER'].count()
     name=df.groupby('GENDER')['GENDER'].count().index
