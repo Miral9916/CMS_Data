@@ -91,6 +91,13 @@ with col1:
 
                    )
     st.plotly_chart(fig)
+
+    value=df.groupby('GENDER')['GENDER'].count()
+    name=df.groupby('GENDER')['GENDER'].count().index
+    chart1 = px.pie(df, values = value,names=name,title = "Gender Base Analysis",width=400, height = 400)
+    chart1.update(layout=dict(title=dict(x=0.1)))
+    st.plotly_chart(chart1)    
+    
 with col2:
      
      value=df.groupby('RACE')['RACE'].count()
