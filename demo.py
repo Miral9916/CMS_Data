@@ -17,7 +17,7 @@ st.markdown(f"<h1 style='text-align: left; color: #00008B; width:1360px; height 
 with st.sidebar:
     st.markdown(
         '<div style="background-color: #00008B; height: 50px; width: 298px; border-radius: 5px">'
-        '<h2 style = "text-align: center; color: white">Filter</h2>'
+        '<h2 style = "text-align: center; color: black">Filter</h2>'
         '</div>', unsafe_allow_html=True
     )
 
@@ -29,8 +29,6 @@ with st.sidebar:
     options3=st.multiselect('Select Race', options=['All'] + list(beneficiary['RACE'].unique().tolist()),default=a)
 
     options4=st.multiselect('Select State', options=['All'] + list(beneficiary['STATE'].unique().tolist()),default=a)
-
-
 
 
     if 'All' in options1:
@@ -55,9 +53,6 @@ with st.sidebar:
 df = filtered_df.drop_duplicates(subset=["DESYNPUF_ID"], keep='first')
 
 
-
-
-
 style = """
 div[data-testid="metric-value-container"] {
     font-size: 1rem;
@@ -71,7 +66,7 @@ div[data-testid="metric-delta-container"] {
 }
 
 div[data-testid="metric-container"] {
-    background-color: #008080;
+    background-color: #4682B4;
     border-radius: 10px;
     padding: 1rem;
 }
