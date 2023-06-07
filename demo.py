@@ -79,7 +79,7 @@ st.metric("Number of Unique Patients",f"{len(df['DESYNPUF_ID'].unique())}")
 
 
 ## Individual Graphs
-col1, col2, col3 = st.columns(3)
+col1, col2, col3,col4 = st.columns(3)
 with col1:
     fig = px.histogram(df,
                    x= 'AGE_INTERVAL',
@@ -107,5 +107,21 @@ with col3:
     chart1 = px.pie(df, values = value,names=name,title = "Gender Base Analysis",width=400, height = 400)
     chart1.update(layout=dict(title=dict(x=0.1)))
     st.plotly_chart(chart1)
+   
+with col4:
+    
+    value = (df[AGE_INTERVAL].value_counts(normalize=True) * 100).reset_index()
+    fig = px.bar(df,
+             x='index',
+             y=value,
+             text='AGE_INTERVAL_PERCENTAGE',
+             width=600,
+             title="Age Base Analysis",
+             height=400)
+
+    fig.update_traces(texttemplate='%{text:.2f}%', textposition='outside')
+
+    fig.update_layout(xaxis_title='Age Interval', yaxis_title='Percentage'
+)
 
 
