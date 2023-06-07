@@ -55,7 +55,7 @@ df = filtered_df.drop_duplicates(subset=["DESYNPUF_ID"], keep='first')
 
 style = """
 div[data-testid="metric-value-container"] {
-    font-size: 1rem;
+    font-size: 2em;
     font-weight: bold;
     color: #ffffff;
 }
@@ -72,7 +72,7 @@ div[data-testid="metric-container"] {
 }
 """
 st.write('<style>{}</style>'.format(style), unsafe_allow_html=True)
-st.metric("Number of Unique Patient",f"{len(df['DESYNPUF_ID'].unique())}")
+st.metric("Number of Unique Patients",f"{len(df['DESYNPUF_ID'].unique())}")
 
 
 
