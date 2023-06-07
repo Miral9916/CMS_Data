@@ -79,7 +79,7 @@ st.metric("Number of Unique Patients",f"{len(df['DESYNPUF_ID'].unique())}")
 
 
 ## Individual Graphs
-col1, col2, col3,col4 = st.columns(4)
+col1, col2 = st.columns(2)
 with col1:
     fig = px.histogram(df,
                    x= 'AGE_INTERVAL',
@@ -100,6 +100,7 @@ with col2:
      fig1.update_traces(textposition='inside', textinfo='percent')
      st.plotly_chart(fig1)
 
+col3 = st.columns(1)
 with col3:
     
     value=df.groupby('GENDER')['GENDER'].count()
@@ -108,21 +109,21 @@ with col3:
     chart1.update(layout=dict(title=dict(x=0.1)))
     st.plotly_chart(chart1)
    
-with col4:
+# with col4:
     
-    df['value'] = df['AGE_INTERVAL'].value_counts(normalize=True) * 100
-    fig2 = px.bar(df,
-             x='AGE_INTERVAL',
-             y='value',
-             text='value',
-             width=600,
-             title="Age Base Analysis",
-             height=400)
+#     df['value'] = df['AGE_INTERVAL'].value_counts(normalize=True) * 100
+#     fig2 = px.bar(df,
+#              x='AGE_INTERVAL',
+#              y='value',
+#              text='value',
+#              width=600,
+#              title="Age Base Analysis",
+#              height=400)
 
-    fig2.update_traces(texttemplate='%{text:.2f}%', textposition='outside')
+#     fig2.update_traces(texttemplate='%{text:.2f}%', textposition='outside')
 
-    fig2.update_layout(xaxis_title='Age Interval', yaxis_title='Percentage'
-)
-    st.plotly_chart(fig2)
+#     fig2.update_layout(xaxis_title='Age Interval', yaxis_title='Percentage'
+# )
+#     st.plotly_chart(fig2)
 
 
