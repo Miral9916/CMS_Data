@@ -123,5 +123,6 @@ with col4:
 
     fig2.update_layout(xaxis_title='Age Interval', yaxis_title='Percentage'
 )
+    st.plotly_chart(fig2)
 
 
