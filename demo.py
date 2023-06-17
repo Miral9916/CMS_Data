@@ -41,6 +41,7 @@ with st.sidebar:
             filtered_df = filtered_df[filtered_df['RACE'].isin(options3)]
 
 df = filtered_df.drop_duplicates(subset=["DESYNPUF_ID"], keep='first')
+st.dataframe(df)
 
 
 ## Statistics
