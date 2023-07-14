@@ -116,16 +116,25 @@ with col2:
 # )
 #     st.plotly_chart(fig2)
 
-# Melt the DataFrame to long format
-df_melted = Prototype.melt('Month', var_name='Measure', value_name='Value')
+df_stacked = Prototype.melt('Month', var_name='Measure', value_name='Percentage')
 
-# Create the chart
-chart = alt.Chart(df_melted).mark_bar().encode(
-    x='Month:N',
-    y=alt.Y('Value:Q', axis=alt.Axis(format='%')),
-    color='Measure:N',
-    tooltip=['Month', 'Measure', alt.Tooltip('Value:Q', format='%')],
+# Stacked bar chart
+bars = alt.Chart(df_stacked).mark_bar().encode(
+    x='Month',
+    y=alt.Y('Percentage:Q', axis=alt.Axis(format='%'), title='Hospitalization Rate (%)'),
+    color='Measure',
+    tooltip=['Month', 'Measure', alt.Tooltip('Percentage:Q', format='.2%')]
 ).properties(width=600)
+
+# Line chart
+line = alt.Chart(df_raffronto).mark_line(color='red').encode(
+    x='Month',
+    y=alt.Y('BA.2 Variant Proportion:Q', axis=alt.Axis(format='%'), title='Variant Proportion'),
+    tooltip=['Month', alt.Tooltip('BA.2 Variant Proportion:Q', format='.2%')]
+)
+
+# Combine the charts
+chart = alt.layer(bars, line).resolve_scale(y='independent')
 
 # Display the chart using Streamlit
 st.altair_chart(chart, use_container_width=True)
