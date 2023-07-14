@@ -10,7 +10,7 @@ import import altair as alt
 
 ## Improting CSV File
 beneficiary = pd.read_csv("benificiary_d.csv")
-Prototype = pd.read_csv("Prototype.csv")
+# Prototype = pd.read_csv("Prototype.csv")
 
 ## Setting Up Title of Dashboad
 st.set_page_config(page_title="Demographic Distribution of CMS Beneficiary Data", layout="wide")
