@@ -129,8 +129,8 @@ bars = alt.Chart(df_melted).mark_bar().encode(
 # Create the line chart
 line = alt.Chart(Prototype).mark_line(color='red').encode(
     x='Month:N',
-    y=alt.Y('BA.2 Variant Proportion:Q', axis=alt.Axis(format='.0%'), title='Variant Proportion'),
-    tooltip=['Month', alt.Tooltip('BA.2 Variant Proportion:Q', format='.2%')],
+    y='BA.2 Variant Proportion:Q',
+    tooltip=['Month', 'BA.2 Variant Proportion:Q'],
 )
 
 # Combine the charts
