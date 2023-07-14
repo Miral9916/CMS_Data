@@ -121,22 +121,26 @@ df_melted = Prototype.melt('Month', var_name='Measure', value_name='Percentage')
 # Create the stacked bar chart
 bars = alt.Chart(df_melted).mark_bar().encode(
     x='Month:N',
-    y=alt.Y('Percentage:Q', axis=alt.Axis(format='.0%'), stack=None, title='Hospitalization Rate (%)'),
-    color=alt.Color('Measure:N', legend=alt.Legend(title='Measure')),
+    y=alt.Y('Percentage:Q', axis=alt.Axis(format='.0%'), stack=None, title='Percentage'),
+    color='Measure:N',
     tooltip=['Month', 'Measure', alt.Tooltip('Percentage:Q', format='.2%')],
-).properties(width=600)
+)
 
 # Create the line chart
 line = alt.Chart(Prototype).mark_line(color='red').encode(
     x='Month:N',
     y=alt.Y('BA.2 Variant Proportion:Q', axis=alt.Axis(title='Variant Proportion')),
-    tooltip=['Month', alt.Tooltip('BA.2 Variant Proportion:Q')],
+    tooltip=['Month', 'BA.2 Variant Proportion:Q'],
 )
 
-# Combine the charts
+# Combine the charts with dual y-axis
 chart = alt.layer(bars, line).resolve_scale(
-    y=alt.Resolve(scale=alt.ResolveMode.Independent),
-)
+    y=alt.RescaleValue(
+        ['COVID Hospitalization Rate (%)', 'All Hospitalization Rate (%)'],
+        scheme='independent'
+    ),
+    color='independent'
+).properties(width=600)
 
 # Display the chart using Streamlit
 st.altair_chart(chart, use_container_width=True)
