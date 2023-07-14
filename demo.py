@@ -5,9 +5,11 @@ import numpy as np
 import plotly.express as px
 import plotly.figure_factory as ff
 import plotly.graph_objects as go
+import altair as alt
 
 ## Improting CSV File
 beneficiary = pd.read_csv("benificiary_d.csv")
+prototype = pd.read_csv("prototype.csv")
 
 ## Setting Up Title of Dashboad
 st.set_page_config(page_title="Demographic Distribution of CMS Beneficiary Data", layout="wide")
@@ -66,6 +68,23 @@ div[data-testid="metric-container"] {
 st.write('<style>{}</style>'.format(style), unsafe_allow_html=True)
 st.metric("Number of Unique Patients",f"{len(df['DESYNPUF_ID'].unique())}")
 
+base_raffronto = alt.Chart(prototype).encode(
+    x=alt.X('monthdate(data):O', axis=alt.Axis(title='Month'))
+)
+bar_tamponi = base_raffronto.mark_bar(opacity=.4,color='orange').encode(
+    alt.Tooltip(['data:T', 'Scostamento tamponi:Q']),
+    y=alt.Y('Scostamento tamponi:Q',axis=alt.Axis(title='tests (orange bars)'))
+)
+bar_nuovi_pos = base_raffronto.mark_bar(opacity=.4,color='blue').encode(
+    alt.Tooltip(['data:T', 'nuovi_positivi:Q']),
+    y=alt.Y('nuovi_positivi:Q',axis=alt.Axis(title='New positives (blue bars)'))
+)
+line_perc = base_raffronto.mark_line(opacity=.7,color='red',point=True).encode(
+    tooltip = [{'type':'temporal','field':'data'},{'type':'quantitative','field':'perc_positivi','format':'.2f'}],
+    y=alt.Y('perc_positivi:Q',axis=alt.Axis(title='Percentage of new positives on tests (red line)'),scale=alt.Scale(domain=(0,100)))
+)
+layer_bars = alt.layer(bar_tamponi,bar_nuovi_pos)
+st.altair_chart(alt.layer(layer_bars,line_perc).resolve_scale(y='independent').properties(width=650,height=400).interactive())
 
 
 ## Individual Graphs
@@ -113,5 +132,27 @@ with col2:
 #     fig2.update_layout(xaxis_title='Age Interval', yaxis_title='Percentage'
 # )
 #     st.plotly_chart(fig2)
+
+base_raffronto = alt.Chart(df_raffronto).encode(
+    x=alt.X('month(data):O', axis=alt.Axis(title='Month')),
+)
+
+bar_tamponi = base_raffronto.mark_bar(opacity=.4, color='orange').encode(
+    alt.Tooltip(['data:T', 'Scostamento tamponi:Q']),
+    y=alt.Y('Scostamento tamponi:Q', axis=alt.Axis(title='COVID Hospitalization Rate (%)')),
+)
+
+bar_nuovi_pos = base_raffronto.mark_bar(opacity=.4, color='blue').encode(
+    alt.Tooltip(['data:T', 'nuovi_positivi:Q']),
+    y=alt.Y('nuovi_positivi:Q', axis=alt.Axis(title='All Hospitalization Rate (%)')),
+)
+
+line_perc = base_raffronto.mark_line(opacity=.7, color='red', point=True).encode(
+    tooltip=[{'type': 'temporal', 'field': 'data'}, {'type': 'quantitative', 'field': 'perc_positivi', 'format': '.2f'}],
+    y=alt.Y('perc_positivi:Q', axis=alt.Axis(title='BA.2 Variant Proportion')),
+)
+
+layer_bars = alt.layer(bar_tamponi, bar_nuovi_pos)
+st.altair_chart(alt.layer(layer_bars, line_perc).resolve_scale(y='independent').properties(width=650, height=400).interactive())
 
 
