@@ -116,6 +116,7 @@ with col2:
 # )
 #     st.plotly_chart(fig2)
 
+# Melt the DataFrame to long format for stacked bar chart
 df_stacked = Prototype.melt('Month', var_name='Measure', value_name='Percentage')
 
 # Stacked bar chart
