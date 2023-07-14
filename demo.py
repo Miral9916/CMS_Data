@@ -140,4 +140,3 @@ chart = alt.layer(bars, line).resolve_scale(y='independent')
 # Display the chart using Streamlit
 st.altair_chart(chart, use_container_width=True)
 
-
