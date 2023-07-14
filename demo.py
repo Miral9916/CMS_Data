@@ -122,9 +122,9 @@ df_melted = Prototype.melt('Month', var_name='Measure', value_name='Value')
 # Create the chart
 chart = alt.Chart(df_melted).mark_bar().encode(
     x='Month:N',
-    y='Value:Q',
+    y=alt.Y('Value:Q', axis=alt.Axis(format='%')),
     color='Measure:N',
-    tooltip=['Month', 'Measure', 'Value']
+    tooltip=['Month', 'Measure', alt.Tooltip('Value:Q', format='%')],
 ).properties(width=600)
 
 # Display the chart using Streamlit
