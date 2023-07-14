@@ -121,7 +121,7 @@ df_stacked = Prototype.melt('Month', var_name='Measure', value_name='Percentage'
 # Stacked bar chart
 bars = alt.Chart(df_stacked).mark_bar().encode(
     x='Month',
-    y=alt.Y('Percentage:Q', axis=alt.Axis(format='%'), stack=None),
+    y='Percentage:Q',
     color='Measure',
     tooltip=['Month', 'Measure', alt.Tooltip('Percentage:Q', format='.2%')]
 ).properties(width=600)
