@@ -116,4 +116,32 @@ with col2:
 # )
 #     st.plotly_chart(fig2)
 
+# Stacked bar chart
+bars = alt.Chart(Prototype).mark_bar().encode(
+    x='Month',
+    y=alt.Y('COVID 19 Hospitalization Rate in Exposed Population (%):Q', axis=alt.Axis(title='COVID 19 Hospitalization Rate in Exposed Population (%)')),
+    color=alt.value('orange'),
+    tooltip=['Month', 'COVID 19 Hospitalization Rate in Exposed Population (%)']
+).properties(width=600)
+
+bars += alt.Chart(Prototype).mark_bar().encode(
+    x='Month',
+    y=alt.Y('COVID 19 Hospitalization Rate in Unexposed Population (%):Q', axis=alt.Axis(title='COVID 19 Hospitalization Rate in Unexposed Population (%)')),
+    color=alt.value('blue'),
+    tooltip=['Month', 'COVID 19 Hospitalization Rate in Unexposed Population (%)']
+)
+
+# Line chart
+line = alt.Chart(Prototype).mark_line(color='red').encode(
+    x='Month',
+    y=alt.Y('BA.2 Variant Proportion:Q', axis=alt.Axis(title='BA.2 Variant Proportion')),
+    tooltip=['Month', 'BA.2 Variant Proportion']
+)
+
+# Combine the charts
+chart = alt.layer(bars, line).resolve_scale(y='independent')
+
+# Display the chart using Streamlit
+st.altair_chart(chart, use_container_width=True)
+
 
