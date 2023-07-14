@@ -134,14 +134,7 @@ line = alt.Chart(Prototype).mark_line(color='red').encode(
 )
 
 # Combine the charts with dual y-axis
-chart = alt.layer(bars, line).resolve_scale(
-    y=alt.RescaleValue(
-        ['COVID Hospitalization Rate (%)', 'All Hospitalization Rate (%)'],
-        scheme='independent'
-    ),
-    color='independent'
-).properties(width=600)
-
+chart = alt.layer(bars, line).resolve_scale(y='independent')
 # Display the chart using Streamlit
 st.altair_chart(chart, use_container_width=True)
 
