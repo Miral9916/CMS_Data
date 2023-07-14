@@ -98,24 +98,24 @@ with col2:
     chart1.update(layout=dict(title=dict(x=0.1)))
     st.plotly_chart(chart1)
    
-# with col4:
+with col4:
     
-#     df['value'] = df['AGE_INTERVAL'].value_counts(normalize=True) * 100
-#     fig2 = px.bar(df,
-#              x='AGE_INTERVAL',
-#              y='value',
-#              text='value',
-#              width=600,
-#              title="Age Base Analysis",
-#              height=400)
+    df['value'] = df['AGE_INTERVAL'].value_counts(normalize=True) * 100
+    fig2 = px.bar(df,
+             x='AGE_INTERVAL',
+             y='value',
+             text='value',
+             width=600,
+             title="Age Base Analysis",
+             height=400)
 
-#     fig2.update_traces(texttemplate='%{text:.2f}%', textposition='outside')
+    fig2.update_traces(texttemplate='%{text:.2f}%', textposition='outside')
 
-#     fig2.update_layout(xaxis_title='Age Interval', yaxis_title='Percentage'
-# )
-#     st.plotly_chart(fig2)
+    fig2.update_layout(xaxis_title='Age Interval', yaxis_title='Percentage'
+)
+    st.plotly_chart(fig2)
 
-base_raffronto = alt.Chart(df_raffronto).encode(
+base_raffronto = alt.Chart(prototype).encode(
     x=alt.X('month(data):O', axis=alt.Axis(title='Month')),
 )
 
