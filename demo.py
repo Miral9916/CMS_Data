@@ -124,7 +124,7 @@ bars = alt.Chart(df_melted).mark_bar().encode(
     y=alt.Y('Percentage:Q', axis=alt.Axis(format='.0%'), stack=None, title='Percentage'),
     color='Measure:N',
     tooltip=['Month', 'Measure', alt.Tooltip('Percentage:Q', format='.2%')],
-)
+).properties(width=600)
 
 # Create the line chart
 line = alt.Chart(Prototype).mark_line(color='red').encode(
@@ -133,8 +133,9 @@ line = alt.Chart(Prototype).mark_line(color='red').encode(
     tooltip=['Month', 'BA.2 Variant Proportion:Q'],
 )
 
-# Combine the charts with dual y-axis
+# Combine the charts
 chart = alt.layer(bars, line).resolve_scale(y='independent')
+
 # Display the chart using Streamlit
 st.altair_chart(chart, use_container_width=True)
 
