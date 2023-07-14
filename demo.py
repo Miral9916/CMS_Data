@@ -116,14 +116,14 @@ with col2:
 #     st.plotly_chart(fig2)
 
 # Melt the DataFrame to long format for stacked bar chart
-df_melted = Prototype.melt('Month', var_name='Measure', value_name='Percentage')
+df_melted = Prototype.melt('Month', var_name='Measure', value_name='Value')
 
 # Create the stacked bar chart
 bars = alt.Chart(df_melted).mark_bar().encode(
     x='Month:N',
-    y=alt.Y('Percentage:Q', axis=alt.Axis(format='.0%'), stack=None, title='Percentage'),
+    y=alt.Y('Value:Q', axis=alt.Axis(format='.0%'), stack=None, title='Percentage'),
     color='Measure:N',
-    tooltip=['Month', 'Measure', alt.Tooltip('Percentage:Q', format='.2%')],
+    tooltip=['Month', 'Measure', alt.Tooltip('Value:Q', format='.2%')],
 ).properties(width=600)
 
 # Create the line chart
