@@ -118,7 +118,7 @@ with col2:
 # Melt the DataFrame to long format for stacked bar chart
 df_melted = Prototype.melt('Month', var_name='Measure', value_name='Percentage')
 
-# Create the stacked bar chart
+# Stacked bar chart
 bars = alt.Chart(df_melted).mark_bar().encode(
     x='Month:N',
     y=alt.Y('Percentage:Q', axis=alt.Axis(format='.0%'), stack=None, title='Percentage'),
@@ -126,15 +126,22 @@ bars = alt.Chart(df_melted).mark_bar().encode(
     tooltip=['Month', 'Measure', alt.Tooltip('Percentage:Q', format='.2%')],
 ).properties(width=600)
 
-# Create the line chart
+# Line chart
 line = alt.Chart(Prototype).mark_line(color='red').encode(
     x='Month:N',
-    y='BA.2 Variant Proportion:Q',
-    tooltip=['Month', 'BA.2 Variant Proportion:Q'],
+    y=alt.Y('BA.2 Variant Proportion:Q', axis=alt.Axis(title='Variant Proportion')),
+    tooltip=['Month', alt.Tooltip('BA.2 Variant Proportion:Q')]
 )
 
-# Combine the charts
-chart = alt.layer(bars, line).resolve_scale(y='independent')
+# Combine the charts using layering and dual y-axis
+chart = alt.layer(
+    bars,
+    line
+).resolve_scale(
+    y='independent'
+).properties(
+    width=600
+)
 
 # Display the chart using Streamlit
 st.altair_chart(chart, use_container_width=True)
