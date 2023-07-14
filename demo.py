@@ -127,7 +127,7 @@ bars = alt.Chart(df_stacked).mark_bar().encode(
 ).properties(width=600)
 
 # Line chart
-line = alt.Chart(df_raffronto).mark_line(color='red').encode(
+line = alt.Chart(Prototype).mark_line(color='red').encode(
     x='Month',
     y=alt.Y('BA.2 Variant Proportion:Q', axis=alt.Axis(format='%'), title='Variant Proportion'),
     tooltip=['Month', alt.Tooltip('BA.2 Variant Proportion:Q', format='.2%')]
