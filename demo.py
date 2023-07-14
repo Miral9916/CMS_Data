@@ -5,10 +5,12 @@ import numpy as np
 import plotly.express as px
 import plotly.figure_factory as ff
 import plotly.graph_objects as go
+import import altair as alt
 
 
 ## Improting CSV File
 beneficiary = pd.read_csv("benificiary_d.csv")
+Prototype = pd.read_csv("Prototype.csv")
 
 ## Setting Up Title of Dashboad
 st.set_page_config(page_title="Demographic Distribution of CMS Beneficiary Data", layout="wide")
@@ -97,21 +99,21 @@ with col2:
     chart1.update(layout=dict(title=dict(x=0.1)))
     st.plotly_chart(chart1)
    
-with col4:
+# with col4:
     
-    df['value'] = df['AGE_INTERVAL'].value_counts(normalize=True) * 100
-    fig2 = px.bar(df,
-             x='AGE_INTERVAL',
-             y='value',
-             text='value',
-             width=600,
-             title="Age Base Analysis",
-             height=400)
+#     df['value'] = df['AGE_INTERVAL'].value_counts(normalize=True) * 100
+#     fig2 = px.bar(df,
+#              x='AGE_INTERVAL',
+#              y='value',
+#              text='value',
+#              width=600,
+#              title="Age Base Analysis",
+#              height=400)
 
-    fig2.update_traces(texttemplate='%{text:.2f}%', textposition='outside')
+#     fig2.update_traces(texttemplate='%{text:.2f}%', textposition='outside')
 
-    fig2.update_layout(xaxis_title='Age Interval', yaxis_title='Percentage'
-)
-    st.plotly_chart(fig2)
+#     fig2.update_layout(xaxis_title='Age Interval', yaxis_title='Percentage'
+# )
+#     st.plotly_chart(fig2)
 
 
